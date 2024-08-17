@@ -22,9 +22,6 @@ function Header({ isAuthenticated, onLogout }) {
             <Button color="inherit" component={Link} to="/contacto">
               Contacto
             </Button>
-            <Button color="inherit" component={Link} to="/politica">
-              Política
-            </Button>
             <Button color="inherit" onClick={onLogout} startIcon={<ExitToAppIcon />}>
               Cerrar Sesión
             </Button>
