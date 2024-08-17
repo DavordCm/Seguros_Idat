@@ -1,17 +1,37 @@
+// src/components/Header.js
 import React from 'react';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({ isAuthenticated, onLogout }) {
   return (
-    <header className="header">
-      <h1>Seguros IDAT</h1>
-      <nav>
-        <ul>
-          <li><a href="#home">Inicio</a></li>
-          <li><a href="#services">Servicios</a></li>
-          <li><a href="#contact">Contacto</a></li>
-        </ul>
-      </nav>
-    </header>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" style={{ flexGrow: 1 }}>
+          Seguros IDAT
+        </Typography>
+        {isAuthenticated && (
+          <>
+            <Button color="inherit" component={Link} to="/">
+              Inicio
+            </Button>
+            <Button color="inherit" component={Link} to="/vehiculo">
+              Vehículo
+            </Button>
+            <Button color="inherit" component={Link} to="/contacto">
+              Contacto
+            </Button>
+            <Button color="inherit" component={Link} to="/politica">
+              Política
+            </Button>
+            <Button color="inherit" onClick={onLogout} startIcon={<ExitToAppIcon />}>
+              Cerrar Sesión
+            </Button>
+          </>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }
 

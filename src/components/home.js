@@ -2,10 +2,11 @@ import React from 'react';
 
 function Home() {
   return (
-    <section className="home">
-      <h2>Bienvenido a Seguros IDAT</h2>
-      <p>Ofrecemos los mejores seguros para ti y tu familia.</p>
-    </section>
+    <div className="home">
+      <h1>Bienvenido a Seguros IDAT</h1>
+      <p>Encuentra la mejor póliza de seguro para ti y tu familia.</p>
+      <button className="home-button">Explorar más</button>
+    </div>
   );
 }
 

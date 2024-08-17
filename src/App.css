@@ -1,71 +1,45 @@
+/* Estilos generales */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
 }
 
-.App {
-  text-align: center;
+/* Estilos para el formulario de login */
+.login {
+  max-width: 400px;
+  margin: 50px auto;
   padding: 20px;
-}
-
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-  border-radius: 10px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin: 0;
-}
-
-p {
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-
-.home, .services, .contact {
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
-  background-color: white;
+  background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  color: #333;
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.login form div {
+  margin-bottom: 15px;
 }
 
-ul li {
-  background-color: #f4f4f4;
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 4px;
+.login form label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-form div {
-  margin-bottom: 10px;
-}
-
-input, textarea {
+.login form input {
   width: 100%;
   padding: 8px;
-  margin-top: 4px;
-  border-radius: 4px;
   border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-button {
-  padding: 10px 20px;
+.login form button {
+  width: 100%;
+  padding: 10px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -73,6 +47,158 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.login form button:hover {
   background-color: #0056b3;
 }
+
+/* Estilos para la barra de navegación */
+.navbar {
+  background-color: #007bff;
+  padding: 10px 20px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Alinea verticalmente */
+}
+
+.navbar ul li {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el contenido del li */
+  margin: 0 15px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para el botón de cerrar sesión */
+.logout-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 0; /* Eliminar padding para alinear el ícono */
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center; /* Alinea verticalmente el ícono */
+}
+
+.logout-button:hover {
+  color: #f44336;
+}
+
+.logout-button svg {
+  font-size: 1.5em; /* Ajusta el tamaño del ícono */
+}
+
+/* Estilos para las secciones Home, Contacto, y Vehículo */
+.home, .contacto, .vehiculoFrm {
+  text-align: center;
+  padding: 50px;
+  background-color: white;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.home h1, .contacto h1, .vehiculoFrm h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+
+.home p, .contacto p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.home-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+}
+
+.vehiculoFrm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.vehiculoFrm label {
+  margin-bottom: 15px;
+}
+
+.vehiculoFrm select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.plan-details {
+  margin-top: 20px;
+}
+
+.plan-details h2 {
+  margin-bottom: 10px;
+}
+
+.plan-details p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.plan-details ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.plan-details li {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Estilos para la política de privacidad */
+.politica-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.politica-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.politica-container h2 {
+  margin-top: 20px;
+  color: #007bff;
+}
+
+.politica-container p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #333;
+}
+
