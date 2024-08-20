@@ -1,68 +1,83 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, TextField, Box, Typography, Select, MenuItem } from '@mui/material';
+import { Box, Button, Typography, Card, CardContent } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-function VehiculoFrm() {
+const VehiculoFrm = () => {
+  const [showOffers, setShowOffers] = useState(false);
   const [placa, setPlaca] = useState('');
-  const [showSelect, setShowSelect] = useState(false);
-  const [tipoSeguro, setTipoSeguro] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleCotizar = () => {
     if (placa !== '') {
-      setShowSelect(true);
+      setShowOffers(true);
+    } else {
+      alert('Por favor, ingrese una placa válida.');
     }
   };
 
-  const handleSelectChange = (e) => {
-    setTipoSeguro(e.target.value);
+  const handleNext = () => {
+    navigate('/verificacion-datos');
   };
 
   return (
-    <Box sx={{ maxWidth: 400, margin: '0 auto', padding: 2 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Seguro de Vehículo
+    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 4, textAlign: 'center' }}>
+      <Typography variant="h4" gutterBottom>
+        Ingreso tu Placa
       </Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Número de Placa"
+      <Box component="form" sx={{ mb: 2 }}>
+        <input
+          type="text"
+          placeholder="Número de Placa"
           value={placa}
           onChange={(e) => setPlaca(e.target.value)}
-          fullWidth
-          margin="normal"
-          required
+          style={{
+            padding: '10px',
+            fontSize: '16px',
+            width: '100%',
+            marginBottom: '10px',
+          }}
         />
-        <Typography variant="body2">
+        <Typography variant="body2" sx={{ mb: 2 }}>
           Al ingresar aceptas la{' '}
-          <Link to="/politica-privacidad">Política de privacidad</Link>.
+          <a href="/politica-privacidad" style={{ textDecoration: 'none' }}>
+            Política de privacidad
+          </a>.
         </Typography>
-        <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          onClick={handleCotizar}
+        >
           Cotizar
         </Button>
-      </form>
+      </Box>
 
-      {showSelect && (
-        <Box sx={{ mt: 3 }}>
-          <Typography variant="h6" component="h2">
-            Selecciona un tipo de seguro:
-          </Typography>
-          <Select
-            value={tipoSeguro}
-            onChange={handleSelectChange}
+      {showOffers && (
+        <Box>
+          <Card sx={{ mt: 2 }}>
+            <CardContent>
+              <Typography variant="h6">Ofertas en...</Typography>
+            </CardContent>
+          </Card>
+          <Card sx={{ mt: 2 }}>
+            <CardContent>
+              <Typography variant="h6">2x1 en...</Typography>
+            </CardContent>
+          </Card>
+          <Button
+            variant="contained"
+            color="secondary"
             fullWidth
-            displayEmpty
+            sx={{ mt: 2 }}
+            onClick={handleNext}
           >
-            <MenuItem value="" disabled>
-              Seleccionar...
-            </MenuItem>
-            <MenuItem value="SOAT">SOAT</MenuItem>
-            <MenuItem value="Todo Riesgo">Seguro Contra Todo Riesgo</MenuItem>
-            <MenuItem value="Responsabilidad Civil">Seguro de Responsabilidad Civil</MenuItem>
-          </Select>
+            Siguiente
+          </Button>
         </Box>
       )}
     </Box>
   );
-}
+};
 
 export default VehiculoFrm;

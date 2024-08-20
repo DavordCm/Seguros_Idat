@@ -1,11 +1,14 @@
+// src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/home';
 import VehiculoFrm from './components/VehiculoFrm';
-import Contacto from './components/contacto';
-import Login from './components/login';
+import Contacto from './components/contacto/contacto';
+import Login from './components/login/login';
 import Politicas from './components/politica';
+import Datos from './components/datos/datos';
+import ElegirPlan from './components/plan/elegirPlan';
 import './App.css';
 
 function App() {
@@ -28,18 +31,20 @@ function App() {
       <div className="App">
         <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
         <Routes>
-          {!isAuthenticated ? (
-            <Route path="*" element={<Login onLogin={handleLogin} />} />
-          ) : (
-            <>
-              <Route path="/" element={<Home />} />
-              <Route path="/vehiculo" element={<VehiculoFrm />} />
-              <Route path="/contacto" element={<Contacto />} />
-              <Route path="/politica-privacidad" element={<Politicas />} />
-              <Route path="*" element={<Navigate to="/" />} />
-            </>
-          )}
-        </Routes>
+  {!isAuthenticated ? (
+    <Route path="*" element={<Login onLogin={handleLogin} />} />
+  ) : (
+    <>
+      <Route path="/" element={<Home />} />
+      <Route path="/vehiculo" element={<VehiculoFrm />} />
+      <Route path="/datos" element={<Datos />} />
+      <Route path="/contacto" element={<Contacto />} />
+      <Route path="/politica-privacidad" element={<Politicas />} />
+      <Route path="/elegir-plan" element={<ElegirPlan />} />
+      <Route path="*" element={<Navigate to="/" />} />
+    </>
+  )}
+</Routes>
       </div>
     </Router>
   );
