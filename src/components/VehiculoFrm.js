@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import { Box, Button, Typography, Card, CardContent } from '@mui/material';
+import { Box, Button, Typography,} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const VehiculoFrm = () => {
-  const [showOffers, setShowOffers] = useState(false);
   const [placa, setPlaca] = useState('');
   const navigate = useNavigate();
 
   const handleCotizar = () => {
     if (placa !== '') {
-      setShowOffers(true);
+      navigate('/datos'); // Redirige a la página de verificación de datos
     } else {
-      alert('Por favor, ingrese una placa válida.');
+      alert('Por favor, ingresa un número de placa.');
     }
-  };
-
-  const handleNext = () => {
-    navigate('/verificacion-datos');
   };
 
   return (
@@ -52,30 +47,6 @@ const VehiculoFrm = () => {
           Cotizar
         </Button>
       </Box>
-
-      {showOffers && (
-        <Box>
-          <Card sx={{ mt: 2 }}>
-            <CardContent>
-              <Typography variant="h6">Ofertas en...</Typography>
-            </CardContent>
-          </Card>
-          <Card sx={{ mt: 2 }}>
-            <CardContent>
-              <Typography variant="h6">2x1 en...</Typography>
-            </CardContent>
-          </Card>
-          <Button
-            variant="contained"
-            color="secondary"
-            fullWidth
-            sx={{ mt: 2 }}
-            onClick={handleNext}
-          >
-            Siguiente
-          </Button>
-        </Box>
-      )}
     </Box>
   );
 };

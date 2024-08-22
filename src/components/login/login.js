@@ -1,7 +1,6 @@
 // src/components/Login.js
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Link as MuiLink } from '@mui/material';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');

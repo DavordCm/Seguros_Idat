@@ -1,31 +1,41 @@
-// src/components/Datos.js
 import React from 'react';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-function Datos() {
+const Datos = () => {
   const navigate = useNavigate();
 
-  const handleContinue = (e) => {
-    e.preventDefault();
-    navigate('/elegir-plan'); 
+  const handleContinuar = () => {
+    navigate('/elegir-plan'); // Redirige a la página de elegir plan
   };
 
   return (
-    <div>
-      <h1>Verificación de Datos</h1>
-      <form onSubmit={handleContinue}>
-        <label>Placa: ABC-123</label>
-        <br />
-        <label>Email:</label>
-        <input type="email" required />
-        <br />
-        <label>Documento:</label>
-        <input type="text" required />
-        <br />
-        <button type="submit">Continuar</button>
-      </form>
-    </div>
+    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 4, textAlign: 'center' }}>
+      <Typography variant="h5" gutterBottom>
+        Verifica tus datos
+      </Typography>
+      <Typography variant="body1">Placa: ABC-123</Typography>
+      <Typography variant="body1">Modelo: Lamborghini</Typography>
+      <Typography variant="body1" sx={{ mb: 2 }}>
+        Uso: Taxi
+      </Typography>
+      <TextField
+        label="Email"
+        variant="outlined"
+        fullWidth
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        label="Documento"
+        variant="outlined"
+        fullWidth
+        sx={{ mb: 2 }}
+      />
+      <Button variant="contained" color="primary" fullWidth onClick={handleContinuar}>
+        Continuar
+      </Button>
+    </Box>
   );
-}
+};
 
 export default Datos;
