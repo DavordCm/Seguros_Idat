@@ -12,23 +12,22 @@ import './App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [empleado, setEmpleado] = useState(null); // Mantén empleado si lo usarás
 
-  const handleLogin = (username, password) => {
-    if (username === '123' && password === '123') {
-      setIsAuthenticated(true);
-    } else {
-      alert('Credenciales incorrectas. Inténtalo de nuevo.');
-    }
+  const handleLogin = (empleadoData) => {
+    setIsAuthenticated(true);
+    setEmpleado(empleadoData); // Guardar la información del empleado en el estado
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    setEmpleado(null);
   };
 
   return (
     <Router>
       <div className="App">
-        <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+        <Header isAuthenticated={isAuthenticated} empleado={empleado} onLogout={handleLogout} />
         <Routes>
           {!isAuthenticated ? (
             <Route path="*" element={<Login onLogin={handleLogin} />} />

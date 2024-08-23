@@ -6,9 +6,35 @@ function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onLogin(username, password);
+
+    // Crear el objeto empleado con las credenciales
+    const empleado = {
+      nombre: username,
+      clave: password
+    };
+
+    try {
+      // Realizar la solicitud POST al endpoint de autenticación
+      const response = await fetch('http://localhost:5085/api/Empleado/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(empleado)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        onLogin(data);
+      } else {
+        alert('Credenciales incorrectas. Inténtalo de nuevo.');
+      }
+    } catch (error) {
+      console.error('Error al autenticar:', error);
+      alert('Hubo un problema al intentar iniciar sesión. Inténtalo más tarde.');
+    }
   };
 
   return (
